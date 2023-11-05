@@ -34,7 +34,7 @@
   }
 
   const rollNumber1: Roll2 = [1,2,3]
-                              0 1 2 --> number type
+                             
 
 
   type Add1 = (num1: number,num2:number)=> number
