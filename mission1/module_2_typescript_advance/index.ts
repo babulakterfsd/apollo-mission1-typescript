@@ -1,20 +1,32 @@
-type Todo = {
-   id : number,
-    title : string,
-    completed : boolean
-
+type Man = {
+    name: string;
+    age: number;
 }
 
-const getTodos = async() : Promise<Todo[]> => {
-    const response = await fetch('https://jsonplaceholder.cypress.io/todos')
-    const todos = await response.json()
-    return todos
+type FullPersonality = {
+    name: string;
+    age: number;
+    height?: number;
+    weight?: number;
+    hasWatch?: string;
+    devType?: string;
 }
 
-const logTodos = async() => {
-   const todos =  await getTodos()
-   todos?.slice(0,5)?.map((todo: any) => console.log(`${todo?.id} ${todo?.title}`)
-    )
+const Awal = <T extends Man>(personality: T) : object => {
+    const { name, age } = personality;
+    return {
+        height: 5.5,
+        ...personality
+    }
+}
+const Babul = <T extends Man>(personality: T) : FullPersonality => {
+    const { name, age } = personality;
+    return {
+        name,
+        age,
+        weight: 84,
+    }
 }
 
-logTodos()
+console.log(Awal({ name: "Awal", age: 25, hasComputer: true }));
+console.log(Babul({ name: "Babul", age: 31 }));
