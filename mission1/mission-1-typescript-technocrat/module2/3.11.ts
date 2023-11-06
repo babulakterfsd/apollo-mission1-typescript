@@ -26,6 +26,7 @@
     name: "Mr. XY",
     age: 200,
     contactNo: "017",
+    
   };
   person1.name = "Mr. YZ";
 

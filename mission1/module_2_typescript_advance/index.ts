@@ -1,32 +1,59 @@
 type Man = {
     name: string;
-    age: number;
+    location: string;
 }
 
-type FullPersonality = {
-    name: string;
-    age: number;
-    height?: number;
-    weight?: number;
+interface FullPersonality extends Man {
     hasWatch?: string;
     devType?: string;
 }
 
+//generic
 const Awal = <T extends Man>(personality: T) : object => {
-    const { name, age } = personality;
+    const { name, location } = personality;
     return {
         height: 5.5,
         ...personality
     }
 }
+
+//generic
 const Babul = <T extends Man>(personality: T) : FullPersonality => {
-    const { name, age } = personality;
+    const { name, location } = personality;
     return {
         name,
-        age,
-        weight: 84,
+        location,
+        
     }
 }
 
-console.log(Awal({ name: "Awal", age: 25, hasComputer: true }));
-console.log(Babul({ name: "Babul", age: 31 }));
+console.log(Awal({ name: 'Awal', location: 'Dhaka' }));
+console.log(Babul({ name: 'Babul', location: 'Dhunat' }));
+
+
+
+
+type AreaNumber = {
+    height: number;
+    width: number;
+}
+
+//map type
+type AreaString = {
+    [key in keyof AreaNumber]: string;
+}
+
+
+const Student : Record<string, string> = {
+    name: 'Awal',
+    //age: 31, /* this will show error cause I have defined Student as Record<string, string */
+}
+
+// some utility types
+// Partial - all properties are optional
+// Required - all properties are required
+// Readonly - all properties are readonly
+// Pick - pick some properties from a type
+// Omit - omit some properties from a type
+// Record - create a type with specific keys and values
+
